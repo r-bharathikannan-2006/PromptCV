@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
 import json
 import requests
+import os
 from docxtpl import DocxTemplate
 from datetime import datetime
 from .models import Template
@@ -99,4 +100,5 @@ def build_page(request, name):
 
 def thanks(request):
     return render(request, 'thanks.html')
+
 
