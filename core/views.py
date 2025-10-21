@@ -98,7 +98,6 @@ def build_page(request, name):
         else:
             return HttpResponse(f"Template {tplID} not found!")
 
-def thanks(request):
-    return render(request, 'thanks.html')
+
 
 
