@@ -40,7 +40,7 @@ def build_page(request, name):
         template = Template.objects.get(name=name)
         text = request.POST.get('prompt')
         if template != None:
-            API_KEY = "AIzaSyCdRoWHiPiq0XrnPHjP2aw--i8eBfHT0-M"
+            API_KEY =  os.getenv("GEMINI_KEY")
 
             MODEL_NAME = "gemini-2.0-flash"
             API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={API_KEY}"
@@ -99,3 +99,4 @@ def build_page(request, name):
 
 def thanks(request):
     return render(request, 'thanks.html')
+
