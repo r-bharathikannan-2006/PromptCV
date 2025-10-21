@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptCV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; 
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 56rem; 
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        /* Header Styling */
+        header {
+            margin-bottom: 2.5rem; 
+        }
+
+        h1 {
+            font-size: 1.875rem; 
+            font-weight: 700; 
+        }
+        
+        /* Main content section */
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        h2 {
+            font-size: 2.25rem; 
+            font-weight: 800; 
+            line-height: 1.25; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        /* The line break that appears on small screens and up */
+        .mobile-break {
+            display: none;
+        }
+
+        /* Call-to-Action Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #4f46e5; 
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 2rem; 
+            border-radius: 0.5rem; 
+            text-decoration: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background-color: #4338ca; 
+            transform: scale(1.05); 
+        }
+        
+        .cta-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4); 
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            color: #4b5563; 
+            margin-top: 3rem; 
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            width: 100%;
+        }
+
+        footer a {
+            color: #4f46e5; 
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+
+        /* Responsive Design */
+        @media (min-width: 640px) { /* sm breakpoint */
+            body {
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 3rem; 
+            }
+            .mobile-break {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) { 
+            body {
+                padding: 2rem;
+            }
+            h2 {
+                font-size: 3.75rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>PromptCV</h1>
+        </header>
+
+        <main>
+            <h2>
+                Build a Job-Winning CV <br class="mobile-break"> with a Single Prompt
+            </h2>
+            <a href="template/" class="cta-button">
+                Build Your CV for Free
+            </a>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 PromptCV. Created by <a href="https://www.linkedin.com/in/bharathikannan-r-1a955733b/" class="linkToPortfolio">Bharathikannan R</a>.</p>
+        </footer>
+        
+    </div>
+
+</body>
+</html>

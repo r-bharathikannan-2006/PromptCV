@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptCV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .template-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #ffffff; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .template-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(79, 70, 229, 0.5);
+        }
+
+        input[type="radio"]:checked + .template-card {
+            border-color: #4f46e5; 
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+        
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .content-wrapper {
+            max-width: 56rem; 
+            width: 100%;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        header a {
+            font-size: 1.875rem; 
+            font-weight: 700; 
+            color: #000000; 
+            text-decoration: none;
+        }
+
+        main h2 {
+            font-size: 1.875rem; 
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        main p {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 2.5rem;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            border-color: black;
+        }
+        
+        .template-image-wrapper {
+            background-color: #e5e7eb;
+            height: 12rem;
+            border-radius: 0.375rem;
+        }
+
+        .template-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.375rem;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .template-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #000000;
+            margin-top: 1rem;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-weight: 600;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            transition-property: background-color, transform;
+            transition-duration: 0.15s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4338ca;
+            transform: scale(1.05);
+        }
+
+        button[type="submit"]:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px #f9fafb, 0 0 0 4px #4f46e5;
+        }
+
+        footer {
+            text-align: center;
+            color: #6b7280;
+            margin-top: 3rem;
+        }
+
+        footer a.linkToPortfolio {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+        footer a.linkToPortfolio:hover {
+            color: #4338ca;
+        }
+
+        /* --- Responsive Media Queries --- */
+        
+        @media (min-width: 640px) {
+            .main-container {
+                padding: 1.5rem;
+            }
+            
+            main h2 {
+                font-size: 2.25rem;
+            }
+
+            .template-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-container {
+                padding: 2rem;
+            }
+
+            .template-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+<body> <div class="main-container">
+        
+        <div class="content-wrapper">
+
+            <header>
+                <a href="./index.html"> PromptCV
+                </a>
+            </header>
+
+            <main>
+                <h2>Choose Your Template</h2> <p>Select a layout that best fits your professional style.</p> <form id="templateForm" action="">
+                    <div class="template-grid"> {% for template in templates %}
+                            <label>
+                                <input type="radio" name="template" value="{{ template.name }}" checked>
+                                <div class="template-card"> <div class="template-image-wrapper"> <img src="{{ template.thumbnail.url }}">
+                                    </div>
+                                    <h3>{{ template.name }}</h3> </div>
+                            </label>
+                        {% endfor %}
+                    </div>
+
+                    <button type="submit"> Continue to Prompt
+                    </button>
+                </form>
+            </main>
+        </div>
+        
+        <footer> <p>&copy; 2024 PromptCV. Created by <a href="https://www.linkedin.com/in/bharathikannan-r-1a955733b/" class="linkToPortfolio">Bharathikannan R</a>.</p>
+        </footer>
+    </div>
+
+    <script>
+        const form = document.getElementById('templateForm');
+
+        form.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            const selectedRadio = document.querySelector('input[name="template"]:checked');
+
+            if (selectedRadio) {
+                const name = selectedRadio.value;
+                
+                window.open("../build/"+ name);
+            } else {
+                alert('Please select an option before submitting!');
+            }
+        });
+    </script>
+</body>
+</html>
