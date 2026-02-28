@@ -44,7 +44,7 @@ def build_page(request, name):
             API_KEY =  os.getenv("GEMINI_KEY")
 
             MODEL_NAME = "gemini-2.0-flash"
-            API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={API_KEY}"
+            API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContentkey={API_KEY}"
 
             headers = {
                 "Content-Type": "application/json"
@@ -97,7 +97,3 @@ def build_page(request, name):
 
         else:
             return HttpResponse(f"Template {tplID} not found!")
-
-
-
-
