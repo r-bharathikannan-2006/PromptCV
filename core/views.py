@@ -43,8 +43,8 @@ def build_page(request, name):
         if template != None:
             API_KEY =  os.getenv("GEMINI_KEY")
 
-            MODEL_NAME = "gemini-2.0-flash"
-            API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContentkey={API_KEY}"
+            MODEL_NAME = "gemini-3.0-flash"
+            API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={API_KEY}"
 
             headers = {
                 "Content-Type": "application/json"
