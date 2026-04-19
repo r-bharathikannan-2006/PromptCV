@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
 import json
 import requests
-import os
 from docxtpl import DocxTemplate
 from datetime import datetime
 from .models import Template
@@ -41,7 +40,7 @@ def build_page(request, name):
         template = Template.objects.get(name=name)
         text = request.POST.get('prompt')
         if template != None:
-            API_KEY =  os.getenv("GEMINI_KEY")
+            API_KEY =  "AIzaSyDtl83cHb5n3s9tgCV3H6JA_woWJqelpjk"
 
             MODEL_NAME = "gemini-3.0-flash"
             API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={API_KEY}"
